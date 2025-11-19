@@ -1,0 +1,79 @@
+{{ define "main" }}
+<article class="homepage-article">
+  <div class="homepage-background-video">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{{ .Site.Params.homepage.homepageImage }}" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <div class="homepage-content">
+    <header class="profile-header">
+      {{ with .Site.Params.author.image }}
+      <div class="profile-image">
+        {{ $avatar := resources.Get . }}
+        {{ if $avatar }}
+        <img src="{{ $avatar.RelPermalink }}" alt="{{ $.Site.Params.author.name }}" />
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h1 class="profile-name">{{ .Site.Params.author.name }}</h1>
+
+      {{ with .Site.Params.author.headline }}
+      <p class="profile-headline">{{ . }}</p>
+      {{ end }}
+
+      {{ with .Site.Params.author.bio }}
+      <p class="profile-bio">{{ . }}</p>
+      {{ end }}
+
+      {{ if .Site.Params.author.links }}
+      <div class="profile-links">
+        {{ range .Site.Params.author.links }}
+          {{ range $name, $url := . }}
+          <a href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ $name }}">
+            <span class="relative inline-block align-text-bottom icon">
+              {{ partial "icon.html" $name }}
+            </span>
+          </a>
+          {{ end }}
+        {{ end }}
+      </div>
+      {{ end }}
+    </header>
+
+    {{ if .Site.Params.homepage.showRecent }}
+    <section class="recent-posts">
+      <h2>Recent</h2>
+      <div class="post-cards">
+        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+        {{ range first .Site.Params.homepage.showRecentItems $pages }}
+        <article class="post-card">
+          {{ if .Params.coverImage }}
+          <div class="post-card-image">
+            <img src="{{ .Params.coverImage }}" alt="{{ .Title }}" />
+          </div>
+          {{ end }}
+          <div class="post-card-content">
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ if .Description }}
+            <p>{{ .Description }}</p>
+            {{ end }}
+          </div>
+        </article>
+        {{ end }}
+      </div>
+
+      {{ if .Site.Params.homepage.showMoreLink }}
+      <div class="show-more">
+        <a href="{{ .Site.Params.homepage.showMoreLinkDest }}" class="show-more-link">
+          Show More
+        </a>
+      </div>
+      {{ end }}
+    </section>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

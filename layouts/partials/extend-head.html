@@ -1,0 +1,6 @@
+<!-- Custom script to auto-enable zen mode on article pages -->
+{{ $autoZenMode := resources.Get "js/auto-zen-mode.js" }}
+{{ if $autoZenMode }}
+  {{ $autoZenMode := $autoZenMode | resources.Minify | resources.Fingerprint "sha512" }}
+  <script type="text/javascript" src="{{ $autoZenMode.RelPermalink }}" integrity="{{ $autoZenMode.Data.Integrity }}"></script>
+{{ end }}

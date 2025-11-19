@@ -1,0 +1,22 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Alpha Stack"
+
+[params]
+  displayName = "English"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/blowfish_logo_transparent.png"
+  description = "Information wants to be free"
+
+[params.author]
+  name = "Alpha Stack"
+  email = ""
+  image = "img/avatar.png"
+  headline = "Information wants to be free"
+  links = [
+    { github = "https://github.com/rv64m" },
+    { x-twitter = "https://x.com/hellowo90490095" },
+  ]

@@ -1,0 +1,209 @@
+/* 首页背景视频容器 */
+.homepage-background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+/* 背景视频本身 */
+.homepage-background-video .background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* 视频覆盖层 - 创建色调和氛围 */
+.homepage-background-video .video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.4) 0%,
+    rgba(168, 85, 247, 0.4) 50%,
+    rgba(236, 72, 153, 0.4) 100%
+  );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* 首页内容容器 */
+.homepage-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 个人资料头部 */
+.profile-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.profile-image {
+  margin: 0 auto 1.5rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.profile-headline {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.profile-bio {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.profile-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.profile-links a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.profile-links a:hover {
+  transform: scale(1.2);
+}
+
+/* 最近文章区域 */
+.recent-posts {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.recent-posts h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.post-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post-card-content {
+  padding: 1.5rem;
+}
+
+.post-card-content h3 {
+  margin-bottom: 0.5rem;
+}
+
+.post-card-content h3 a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.post-card-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+}
+
+.show-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.show-more-link {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.show-more-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* 确保首页主体内容透明，显示视频背景 */
+.homepage-article {
+  background: transparent !important;
+  min-height: 100vh;
+}
+
+/* 为首页的 main 和 body 设置透明背景 */
+body:has(.homepage-article) {
+  background: transparent !important;
+}
+
+body:has(.homepage-article) main {
+  background: transparent !important;
+}

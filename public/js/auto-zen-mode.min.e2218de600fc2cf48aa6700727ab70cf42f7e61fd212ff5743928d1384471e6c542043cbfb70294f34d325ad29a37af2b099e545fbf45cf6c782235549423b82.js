@@ -1,0 +1,1 @@
+(function(){window.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("zen-mode-button");e!=null&&_toggleZenMode(e,{scrollToHeader:!1})})})()
